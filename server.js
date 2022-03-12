@@ -2,6 +2,7 @@ require("dotenv").config({ path: "./config.env"});
 const express = require("express");
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
+const path = require('path');
 
 
 connectDB();
@@ -12,6 +13,8 @@ app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
 app.use("/api/private", require("./routes/private"));
+app.use("/api", require("./routes/public"));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Error Handler Middleware
 app.use(errorHandler);

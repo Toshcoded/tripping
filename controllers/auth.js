@@ -74,26 +74,26 @@ exports.forgotPassword = async (req, res, next) => {
     `;
 
     try {
-    await sendEmail({
-        to: user.email,
-        subject: "Password Reset Request",
-        text: message,
-    });
+        await sendEmail({
+            to: user.email,
+            subject: "Password Reset Request",
+            text: message,
+        });
 
-    res.status(200).json({ success: true, data: "Email Sent" });
+        res.status(200).json({ success: true, data: "Email Sent" });
+        } catch (err) {
+        console.log(err);
+
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        await user.save();
+
+        return next(new ErrorResponse("Email could not be sent", 500));
+        }
     } catch (err) {
-    console.log(err);
-
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpire = undefined;
-
-    await user.save();
-
-    return next(new ErrorResponse("Email could not be sent", 500));
+        next(err);
     }
-} catch (err) {
-    next(err);
-}
 };
 
 exports.resetPassword = async (req, res, next) => {
