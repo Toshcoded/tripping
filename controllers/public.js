@@ -6,13 +6,18 @@ const Photo = require("../models/Photo");
 
 exports.getAllUser = async (req, res, next) => {
     User.find({}, function(err,users) {
-      return res.end(JSON.stringify(users));
+      return res.json({
+        data: users,
+      });
     });
   };
 
 exports.getAllProfile = async (req, res, next) => {
   Profile.find({}, function(err,profiles) {
-    return res.end(JSON.stringify(profiles));
+    return res.json({
+      data: profiles,
+    });
+    // return res.end(JSON.stringify(profiles));
   });
 };
 
