@@ -23,25 +23,6 @@ exports.getUser = (req, res, next) => {
     });
 };
 
-exports.getUserAvatar  = async (req, res, next) => {
-  var userId = req.user.id;
-  try{
-    const newAvatar = await Photo.findOne({ user: userId });
-    if(newAvatar){
-      res
-      .status(200)
-      .json({
-        success: true,
-        newAvatar,
-      });
-    }
-    
-  }catch(err){
-    next(err);
-  }
-  
-};
-
 exports.updateUserAvatar = async (req, res, next) => {
   var userId = req.user.id;
   try{

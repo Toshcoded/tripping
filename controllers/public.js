@@ -12,6 +12,25 @@ exports.getAllUser = async (req, res, next) => {
     });
   };
 
+exports.getAvatar  = async (req, res, next) => {
+  var userId = req.params.id;
+  try{
+    const newAvatar = await Photo.findOne({ user: userId });
+    if(newAvatar){
+      res
+      .status(200)
+      .json({
+        success: true,
+        newAvatar,
+      });
+    }
+    
+  }catch(err){
+    next(err);
+  }
+  
+};
+
 exports.getAllProfile = async (req, res, next) => {
   Profile.find({}, function(err,profiles) {
     return res.json({

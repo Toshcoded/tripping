@@ -6,10 +6,8 @@ const {
     getPrivateRoute, 
     getUser, 
     updateUserAvatar, 
-    getUserAvatar,
-    getUserProfile,
     postUserProfile,
-
+    getUserProfile,
 } = require("../controllers/private");
 
 
@@ -23,10 +21,8 @@ router.route("/user/profile").get(protect, getUserProfile);
 router.route("/user/profile").post(protect, postUserProfile);
 
 
-
 //avatar
 router.route("/user/avatar").post(protect, upload.single('avatar'), updateUserAvatar);
-router.route("/user/avatar").get(protect, getUserAvatar);
 
 
 module.exports = router;
