@@ -178,7 +178,7 @@ exports.updateUserProfile = async (req, res, next) => {
         newProfile.occupation = occupation;
         newProfile.degree = degree;
         newProfile.languages = languages;
-
+        newProfile.about = about;
 
         newProfile.save();
       } catch (err) {
