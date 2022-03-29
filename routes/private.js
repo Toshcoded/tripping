@@ -8,7 +8,7 @@ const {
     updateUserAvatar, 
     getUserAvatar,
     getUserProfile,
-    updateUserProfile,
+    postUserProfile,
 
 } = require("../controllers/private");
 
@@ -20,7 +20,7 @@ router.route("/user").get(protect, getUser);
 
 //profile
 router.route("/user/profile").get(protect, getUserProfile);
-router.route("/user/profile").post(protect, updateUserProfile);
+router.route("/user/profile").post(protect, postUserProfile);
 
 
 

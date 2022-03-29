@@ -122,7 +122,7 @@ exports.getUserProfile  = async (req, res, next) => {
 // languages: req.languages,
 // about: req.about,
 
-exports.updateUserProfile = async (req, res, next) => {
+exports.postUserProfile = async (req, res, next) => {
   var userId = req.user.id;
   const { 
     gender,
@@ -181,21 +181,21 @@ exports.updateUserProfile = async (req, res, next) => {
         newProfile.about = about;
 
         newProfile.save();
+
+        res
+        .status(200)
+        .json({
+          success: true,
+          newProfile,
+        });
       } catch (err) {
         return next(new ErrorResponse("Can't update new profile", 500));
         // console.log(err);
       }
     }
 
-    res
-    .status(200)
-    .json({
-      success: true,
-      newProfile,
-    });
 
   }catch(err){
     next(err);
   }
-
 };
