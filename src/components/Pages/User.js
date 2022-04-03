@@ -3,6 +3,7 @@ import axios from "axios";
 import avatar from "../NavBar/avt.jpg"
 import "./User.css"
 import 'slick-carousel/slick/slick.css'
+import { Link } from "react-router-dom"
 import 'slick-carousel/slick/slick-theme.css'
 
 class User extends React.Component {
@@ -34,10 +35,10 @@ class User extends React.Component {
   //     console.log("Error");
   //   }
   // }
-  getAvatar()
+  getAvatar = async() =>
   {
     var userid = this.props.user_id;
-    axios.get("http://localhost:5000/api/avatar/" + userid)
+    await axios.get("http://localhost:5000/api/avatar/" + userid)
     .then(response => {
       console.log("response")
       this.setState({avatar:response.data.newAvatar});
@@ -54,10 +55,8 @@ class User extends React.Component {
 
   render()
   {
-    if(this.state.load === true)
-    {
       var avatarLink;
-      if(this.state.avatar)
+      if(this.state.avatar && this.state.load === true)
       {
         console.log("if ròi")
         avatarLink = "http://localhost:5000/images/" + this.state.avatar.avatar.substr(7, this.state.avatar.avatar.length);
@@ -68,7 +67,11 @@ class User extends React.Component {
         <div>
               <div className="frame-user">
                   <div className="frame-user-img">
-                    <img className="imgAvt" src={avatarLink} alt="Avatar"></img>
+                    {
+                      this.state.avatar && this.state.load === true
+                      ? <img className="imgAvt" src={avatarLink} alt="Avatar"></img>
+                      : <div></div>
+                    }
                   </div>
                   <div className="frame-user-name">
                     Tên: {this.props.name}
@@ -79,18 +82,12 @@ class User extends React.Component {
                     Occupation: {this.props.occupation}
                     <br/>
                     About: {this.props.about}
+                    <Link to={"/about/"}>abcd</Link>;
                   </div>
               </div>
+              
         </div>
     );
-    }
-    else{
-      return (
-        <div>
-          Lỗi con mẹ nó rồi!!
-        </div>
-      )
-    }
 };
 }
 export default User

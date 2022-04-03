@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import User from "../Pages/User";
 import Slider from "react-slick";
+import { Link } from "react-router-dom"
 
 class Home extends React.Component{
 
@@ -76,13 +77,19 @@ class Home extends React.Component{
               {
                 user.about = user.about.substr(0, 15) + "...";
               }
-              return <User avatar = {user.firstName}
+              console.log(user.user);
+              return <Link to={"/about/" + user.user}>
+              <User avatar = {user.firstName}
                            name = {user.firstName + " " + user.lastName}
                            about = {user.about}        
                            location = {user.location}
                            occupation = {user.occupation}     
                            user_id = {user.user}
+
                      />
+              </Link>;
+                    
+
             })
           }
         </Slider>
