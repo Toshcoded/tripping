@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import User from "../Pages/User";
+import Profile from "../Pages/Profile";
 import Slider from "react-slick";
 import { Link } from "react-router-dom"
 
@@ -9,7 +10,9 @@ class Home extends React.Component{
   constructor(props) {
     super(props);
     //Chỉ định một state
-    this.state = {listUser: [] };
+    this.state = {
+      listUser: []
+    };
   }
   getProfile = async() => 
   {
@@ -18,7 +21,7 @@ class Home extends React.Component{
       const result = await axios.get("http://localhost:5000/api/allprofile");
       console.log(result.data.data);
       this.setState({listUser:result.data.data});
-
+      this.setState({user_id: result.data.data.user});
     }
     catch(e)
     {
@@ -78,18 +81,21 @@ class Home extends React.Component{
                 user.about = user.about.substr(0, 15) + "...";
               }
               console.log(user.user);
-              return <Link to={"/about/" + user.user}>
-              <User avatar = {user.firstName}
-                           name = {user.firstName + " " + user.lastName}
-                           about = {user.about}        
-                           location = {user.location}
-                           occupation = {user.occupation}     
-                           user_id = {user.user}
+              return (
+                <React.Fragment>
+                  <Link to={"/profile/" + user._id}>
+                  <User avatar = {user.firstName}
+                              name = {user.firstName + " " + user.lastName}
+                              about = {user.about}        
+                              location = {user.location}
+                              occupation = {user.occupation}     
+                              user_id = {user.user}
 
-                     />
-              </Link>;
-                    
+                        />
+                  </Link>       
+                </React.Fragment>
 
+              );
             })
           }
         </Slider>
