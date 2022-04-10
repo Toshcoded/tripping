@@ -1,0 +1,19 @@
+.frame-user-name {
+    color: white;
+    font-family: 'Poppins';
+    border-radius: 50%;
+font-style: normal;
+display: flex;
+align-items: center;
+text-align: center;
+}
+
+.frame-user-desc {
+    color: white;
+    font-family: 'Poppins';
+font-style: normal;
+display: flex;
+align-items: center;
+text-align: center;
+}
+

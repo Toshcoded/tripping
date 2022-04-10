@@ -1,0 +1,31 @@
+.frame-user{
+      display: inline-block;
+      margin: 10px;
+      width: 200px;
+      height: 250px;
+      border-style: 1px;
+      border-radius:100px 100px 100px 100px;
+      background: none;
+}
+.frame-user-img {
+      width: 100%;
+      height: 50%;
+      border-radius: 50%;
+      border-style: none;
+      clip-path: circle();
+}
+.frame-user-name {
+      width: 99%;
+      height: 20%;
+      border-style: none;
+}
+.frame-user-desc {
+      width: 99%;
+      height: 24%;
+      border-style: none;
+}
+.imgAvt {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+}

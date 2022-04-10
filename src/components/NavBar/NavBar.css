@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #ffffff;
+  background: #FFFFFF;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -18,16 +18,21 @@
   height: 80px;
   max-width: 1500px;
   border-bottom: 1px solid #e4e5e7;
+  font-family: 'Poppins';
 }
 
 .nav-logo {
-  color: #1E90FF;
+  color: #000000;
   align-items: center;
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
   flex-grow: 1;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .nav-menu {
@@ -64,15 +69,44 @@
 
 .nav-item:hover:after {
   width: 100%;
-  background: #1E90FF;
+  background: black;
 }
 
 .nav-item .active {
-  color: #1E90FF;
-  border: 1px solid #1E90FF;
+  color:#000000;
+  border: 1px solid #000000;
+  background: #FFD90F;
+  font-weight: 700;
+  font-family: 'Poppins';
 }
 
 .nav-icon {
   display: none;
 }
 
+.frame-user{
+  display: inline-block;
+  margin: 10px;
+  width: 200px;
+  height: 250px;
+  border-style: solid;
+}
+.frame-user-img {
+  width: 100%;
+  height: 50%;
+  border-style: dotted;
+}
+.frame-user-name {
+  width: 99%;
+  height: 20%;
+  border-style: solid;
+}
+.frame-user-desc {
+  width: 99%;
+  height: 24%;
+  border-style:solid;
+}
+.imgAvt {
+  width: 100%;
+  height: 100%;
+}
