@@ -31,7 +31,7 @@ const ProfileViewPreview = (props) => {
                     on.</p>
                 <div className="pt-12 pb-8">
                     <Link to={"/profile/" + user._id} key={user._id}>
-                    <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                    <button className="bg-tripColor-500 hover:bg-tripColor-500 text-white font-bold py-2 px-4 rounded-full">
                         View Profile
                     </button>
                     </Link>
