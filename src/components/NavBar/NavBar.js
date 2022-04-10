@@ -11,7 +11,7 @@ export default function NavBar() {
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
             Tripping
-            <i className="fas fa-code"></i>
+            <i className="fas fa-code"/>
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
